@@ -5,7 +5,7 @@
 #
 # brodsky@splunk.com 5-3-2018
 
-
+import sys
 import datetime
 import pytz
 import socket
@@ -32,7 +32,8 @@ getipinfourl = 'http://ipinfo.io/json'
 try:
    ipinfodata=requests.get(getipinfourl).json()
 except requests.exceptions.RequestException as e:
-   print e
+   error = e 
+   print ("%s error condition: %s" % (runtimef,e))
    sys.exit(1)
 
 publicip=ipinfodata["ip"]
