@@ -7,7 +7,6 @@
 
 import sys
 import datetime
-import pytz
 import socket
 import re
 import uuid
@@ -44,4 +43,5 @@ ip_postal=ipinfodata["postal"]
 
 # print output
 print ("%s hosttz=\"%s\" hostname=\"%s\" local_ip=\"%s\" public_ip=\"%s\" localmac=\"%s\" ip_location=\"%s\" ip_hostname=\"%s\" ip_org=\"%s\" ip_postal=\"%s\"" % (runtimef,runtimez,localhostname,localip,publicip,localmac,ip_loc,ip_hostname,ip_org,ip_postal)) 
+
 
