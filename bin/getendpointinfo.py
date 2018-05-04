@@ -38,10 +38,12 @@ except requests.exceptions.RequestException as e:
 publicip=ipinfodata["ip"]
 ip_loc=ipinfodata["loc"]
 ip_hostname=ipinfodata["hostname"]
+ip_city=ipinfodata["city"]
 ip_org=ipinfodata["org"]
+ip_country=ipinfodata["country"]
 ip_postal=ipinfodata["postal"]
 
 # print output
-print ("%s hosttz=\"%s\" hostname=\"%s\" local_ip=\"%s\" public_ip=\"%s\" localmac=\"%s\" ip_location=\"%s\" ip_hostname=\"%s\" ip_org=\"%s\" ip_postal=\"%s\"" % (runtimef,runtimez,localhostname,localip,publicip,localmac,ip_loc,ip_hostname,ip_org,ip_postal)) 
+print ("%s hosttz=\"%s\" hostname=\"%s\" local_ip=\"%s\" public_ip=\"%s\" localmac=\"%s\" ip_location=\"%s\" ip_country=\"%s\" ip_city=\"%s\" ip_hostname=\"%s\" ip_org=\"%s\" ip_postal=\"%s\"" % (runtimef,runtimez,localhostname,localip,publicip,localmac,ip_loc,ip_country,ip_city,ip_hostname,ip_org,ip_postal)) 
 
 
