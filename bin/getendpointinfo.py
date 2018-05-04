@@ -44,6 +44,4 @@ ip_country=ipinfodata["country"]
 ip_postal=ipinfodata["postal"]
 
 # print output
-print ("%s hosttz=\"%s\" hostname=\"%s\" local_ip=\"%s\" public_ip=\"%s\" localmac=\"%s\" ip_location=\"%s\" ip_country=\"%s\" ip_city=\"%s\" ip_hostname=\"%s\" ip_org=\"%s\" ip_postal=\"%s\"" % (runtimef,runtimez,localhostname,localip,publicip,localmac,ip_loc,ip_country,ip_city,ip_hostname,ip_org,ip_postal)) 
-
-
+print ("%s host_tz=\"%s\" hostname=\"%s\" local_ip=\"%s\" public_ip=\"%s\" local_mac=\"%s\" ip_location=\"%s\" ip_country=\"%s\" ip_city=\"%s\" ip_hostname=\"%s\" ip_org=\"%s\" ip_postal=\"%s\"" % (runtimef,runtimez,localhostname,localip,publicip,localmac,ip_loc,ip_country,ip_city,ip_hostname,ip_org,ip_postal)) 
