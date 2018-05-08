@@ -4,12 +4,15 @@
 # endpoints for accurate IP mapping. Index data in Splunk and build lookups
 #
 # brodsky@splunk.com 5-3-2018
+# 1.2 - writes temp file to /tmp on *nix/mac platform. also uses "platform"
+# instead of "socket" because of permissions issue. 
 # 1.1 - heartbeat and logic functions - only sends info if either new IP is seen or if 24 hours have elapsed.
 #
 
 import sys
 import datetime
 import socket
+import platform
 import re
 import uuid
 import requests
@@ -32,7 +35,8 @@ runtimez = datetime.datetime.now(tzlocal()).tzname()
 runtimee = int(time.time())
 
 # get local hostname and local IP address and local MAC
-localhostname = socket.gethostname()
+#localhostname = socket.gethostname()
+localhostname = platform.node()
 localip = socket.gethostbyname(localhostname)
 localmac = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
 
@@ -59,7 +63,7 @@ ip_country=ipinfodata["country"]
 iptime = ("%s:%s" % (runtimee,publicip)) 
 
 #local temp file
-ipfile = "getendpointinfo.tmp"
+ipfile = "/tmp/getendpointinfo.tmp"
 
 # logic to check when we ran last and also figure out how long ago that was
 if os.path.isfile(ipfile):
