@@ -4,6 +4,8 @@
 # endpoints for accurate IP mapping. Index data in Splunk and build lookups
 #
 # brodsky@splunk.com 5-3-2018
+# 1.3 - checks for existence of keys in dict - turns out sometimes all keys are not returned
+# by ipinfo
 # 1.2 - writes temp file to /tmp on *nix/mac platform. also uses "platform"
 # instead of "socket" because of permissions issue. 
 # 1.1 - heartbeat and logic functions - only sends info if either new IP is seen or if 24 hours have elapsed.
@@ -52,12 +54,36 @@ except requests.exceptions.RequestException as e:
 
 # return ipinfo content to variables
 publicip=ipinfodata["ip"]
-ip_loc=ipinfodata["loc"]
-ip_hostname=ipinfodata["hostname"]
-ip_org=ipinfodata["org"]
-ip_postal=ipinfodata["postal"]
-ip_city=ipinfodata["city"]
-ip_country=ipinfodata["country"]
+
+if 'ip' in ipinfodata:
+   ip_loc=ipinfodata["loc"]
+else:
+   ip_loc="Not Returned"
+
+if 'hostname' in ipinfodata:
+   ip_hostname=ipinfodata["hostname"]
+else:
+   ip_hostname="Not Returned"
+
+if 'org' in ipinfodata:
+   ip_org=ipinfodata["org"]
+else:
+   ip_org="Not Returned"
+
+if 'postal' in ipinfodata:
+   ip_postal=ipinfodata["postal"]
+else:
+   ip_postal="Not Returned"
+
+if 'city' in ipinfodata:
+   ip_city=ipinfodata["city"]
+else:
+   ip_city="Not Returned"
+
+if 'country' in ipinfodata:
+   ip_country=ipinfodata["country"]
+else:
+   ip_country="Not Returned"
 
 # what time is it right now and what publicip did we have?
 iptime = ("%s:%s" % (runtimee,publicip)) 
